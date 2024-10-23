@@ -14,4 +14,7 @@ import Toolbar from 'primevue/toolbar'
       </template>
     </Toolbar>
   </div>
+  <div class="p-3">
+    <router-view></router-view>
+  </div>
 </template>

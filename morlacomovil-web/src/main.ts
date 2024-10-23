@@ -1,5 +1,7 @@
 import 'primevue/resources/themes/aura-light-green/theme.css'
 import 'primeflex/primeflex.css'
+import "./style.css";
+
 
 import PrimeVue from 'primevue/config'
 import { createApp } from 'vue'
@@ -9,7 +11,8 @@ import router from './router'
 declare global {
   interface Window {
     GLOBAL_CONFIG: {
-      API_URL: string
+      API_URL: string,
+      API_KEY: string
     }
   }
 }

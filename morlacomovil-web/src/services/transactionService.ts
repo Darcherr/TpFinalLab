@@ -1,14 +1,14 @@
 import client from "@/client";
+import Transaction from "@/models/transaction-model";
 
 export default class TransactionService {
-    async get(params: any) {
-        console.log("query", params)
-        const response = await client.get(`transactions`, { params });
+    async get(params: any): Promise<Transaction[]> {
+        const response = await client.get('transactions', {params} );
         return response.data;
     }
 
     async purchase(params: any) {
-        const response = await client.post(`transactions`, { params });
+        const response = await client.post('transactions',  params );
         return response.data;
     }
 }

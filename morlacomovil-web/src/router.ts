@@ -1,7 +1,4 @@
 import { createRouter, createWebHistory, RouteLocationNormalized } from 'vue-router'
-//   import AuthService from "./services/auth-service";
-
-//   const authService = new AuthService();
 
 const Home = () => import('./views/HomeView.vue')
 const Shell = () => import('./views/Shell.vue')
@@ -30,17 +27,16 @@ const router = createRouter({
   }
 })
 
-// router.beforeEach((to: RouteLocationNormalized) => {
-// //   const token = authService.getToken()
-//   const isAuthenticated = localStorage.getItem('auth_token')
+router.beforeEach((to: RouteLocationNormalized) => {
+  const isAuthenticated  = !!localStorage.getItem("user_data");
 
-//   if (to.name == 'login' && token) {
-//     return { name: 'shell' }
-//   }
+  if (to.name == 'login' && isAuthenticated) {
+    return { name: 'shell' }
+  }
 
-//   if (to.name != 'login' && !token) {
-//     return { name: 'login' }
-//   }
-// })
+  if (to.name != 'login' && !isAuthenticated) {
+    return { name: 'login' }
+  }
+})
 
 export default router

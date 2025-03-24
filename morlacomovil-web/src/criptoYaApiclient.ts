@@ -3,18 +3,13 @@ import router from './router'
 
 const DEFAULT_CONTENT_TYPE: string = 'application/json'
 
-const getBaseUrl = (): string => {
-  return window.GLOBAL_CONFIG.API_URL
-}
-
 const getApiUrl = (): string => {
-  return `${getBaseUrl()}`
+  return `https://criptoya.com/api`
 }
 
 const requestMiddleware = (config: InternalAxiosRequestConfig) => {
   config.baseURL = getApiUrl()
   config.headers["Content-Type"] = DEFAULT_CONTENT_TYPE;
-  config.headers['x-apikey'] = window.GLOBAL_CONFIG.API_KEY
   return config
 }
 
@@ -39,9 +34,9 @@ const responseRejected = async (error: AxiosError) => {
   throw new Error((error.response?.data as { message: string }).message)
 }
 
-const client: AxiosInstance = axios.create()
+const criptoYaClient: AxiosInstance = axios.create()
 
-client.interceptors.request.use(requestMiddleware)
-client.interceptors.response.use(responseFulfilled, responseRejected)
+criptoYaClient.interceptors.request.use(requestMiddleware)
+criptoYaClient.interceptors.response.use(responseFulfilled, responseRejected)
 
-export default client
+export default criptoYaClient

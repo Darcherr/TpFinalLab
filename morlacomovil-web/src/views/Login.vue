@@ -32,7 +32,6 @@ const login = () => {
 
   if (user) {
     localStorage.setItem('user_data', JSON.stringify(user));
-    userStore.setUser(user);
     console.log('Inicio de sesión exitoso:', user);
     goToShell();
   } else {

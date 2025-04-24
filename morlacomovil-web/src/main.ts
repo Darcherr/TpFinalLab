@@ -8,9 +8,18 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import { createPinia } from "pinia";
+import { useUserStore } from './store/storeExample';
 import User from './models/user-model';
+import PriceService from './services/CriptoYa/priceService';
 
+const app = createApp(App);
 const store = createPinia();
+
+app.use(store);
+
+const userStore = useUserStore();
+userStore.startAutoUpdate(new PriceService);
+
 
 
 declare global {
@@ -32,9 +41,8 @@ fetch("/config.json")
 
 
 const buildApp = () => {
-  createApp(App)
+  app
     .use(router)
-    .use(store)
     .use(PrimeVue)
     .mount("#app");
 };

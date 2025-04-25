@@ -183,7 +183,6 @@ export const useUserStore = defineStore("user-store", () => {
           };
           
           const crypto = await priceService.value!.get(params);
-          console.log("aeasd",crypto)
           return {
             ...x,
             purchasePrice: crypto.totalAsk,
@@ -193,7 +192,6 @@ export const useUserStore = defineStore("user-store", () => {
   
         const updatedCryptos = await Promise.all(updatePromises);
         cryptos.value = updatedCryptos;
-        console.log("ryptos valors",cryptos.value)
       } catch (error) {
         console.error('Error updating crypto rates:', error);
       }
@@ -230,7 +228,6 @@ export const useUserStore = defineStore("user-store", () => {
     };
 
     const getCryptoBuyPrice = (symbol: string): number => {
-      console.log(cryptos)
       const crypto = cryptos.value.find(c => c.symbol === symbol);
       return crypto ? crypto.purchasePrice : 0;
     };

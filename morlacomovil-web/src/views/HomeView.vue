@@ -36,8 +36,6 @@ const setBalance = computed(() => {
       }
       let sellPrice = userStore.getCryptoSellPrice(crypto_code)
       if (action === 'purchase') {
-        console.log("purchase",sellPrice)
-        console.log("balance parcial",(crypto_amount * sellPrice))
         balanceMap[crypto_code] += (crypto_amount * sellPrice);
       } else if (action === 'sell') {
         balanceMap[crypto_code] -= (crypto_amount * sellPrice);

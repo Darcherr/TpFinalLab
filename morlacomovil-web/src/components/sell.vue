@@ -76,13 +76,12 @@ const sell = async () => {
     })
   }
 
-  console.log(params)
   try {
     isSelling.value = !isSelling.value
     await transactionService.post(params)
     userStore.updateUserAmount(currentBalance.value)
   } catch (error) {
-    console.error('Error en la compra:', error)
+    console.error('Error en la venta:', error)
   } finally {
     resetAmounts()
     await userStore.getTransactionList()

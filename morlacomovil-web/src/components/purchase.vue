@@ -55,7 +55,6 @@ const purchase = async () => {
     })
   }
 
-  console.log(params)
   try {
     isPurchasing.value = !isPurchasing.value
     await transactionService.post(params)

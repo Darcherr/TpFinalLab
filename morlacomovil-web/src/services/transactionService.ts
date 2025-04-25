@@ -4,7 +4,6 @@ import Transaction from "@/models/transaction-model";
 export default class TransactionService {
     async get(params: any): Promise<Transaction[]> {
         const response = await client.get('transactions', {params} );
-        console.log(response.data)
         return response.data;
     }
 

@@ -63,7 +63,6 @@ const register = () => {
   users.value.push(newUser);
   localStorage.setItem('users', JSON.stringify(users.value)); 
 
-  console.log('Registro exitoso:', newUser);
   isLogin.value = true; 
   getUsers();
 };

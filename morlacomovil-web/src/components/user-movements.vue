@@ -15,7 +15,6 @@ const transactionService = new TransactionService();
 const isDeleting = ref<boolean>(false)
 
 const deleteMovement = async () => {
-  console.log(transactionSelected.value)
   isDeleting.value = !isDeleting.value
   await transactionService.delete(transactionSelected.value!._id)
   await userStore.getTransactionList()
